@@ -20,10 +20,7 @@
     "@badeball/cypress-cucumber-preprocessor": "^14.0.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.1.5",
     "cypress": "^11.2.0",
-    "esbuild": "^0.15.15"
-  },
-  "dependencies": {
-    "cypress-cucumber-preprocessor": "^4.3.1"
+    "esbuild": "^0.15.18"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": [
