@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress open",
-    "cypress:execution-cloud-browser-tags": "cypress run --browser chrome"
+    "cypress:execution-tags": "cypress run --browser chrome --headless --env tags=@login"
   },
   "keywords": [
     "cypress",

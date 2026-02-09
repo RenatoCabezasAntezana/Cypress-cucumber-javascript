@@ -20,7 +20,7 @@ jobs:
         uses: cypress-io/github-action@v6.5.0
         with:
           # Puedes usar el payload enviado por Jira para filtrar tags dinámicamente
-          command: npm run cypress:execution-cloud-browser-tags
+          command: npm run cypress:execution-tags
           browser: chrome
           record: true
       - name: Download a Build Artifact
