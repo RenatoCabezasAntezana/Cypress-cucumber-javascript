@@ -1,0 +1,473 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "login;the-user-is-the-page",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "The user is the page",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "line": 6,
+            "name": "A web browser is at the demoqa page",
+            "result": {
+              "duration": 4398000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "When ",
+            "line": 7,
+            "name": "The user is select form",
+            "result": {
+              "duration": 4000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 8,
+            "name": "A user enters the firstname \"Renato\"",
+            "result": {
+              "duration": 3000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 9,
+            "name": "A user enters the lastname \"Cabezas\"",
+            "result": {
+              "duration": 4000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 10,
+            "name": "The user enters his current address \"Av. Miraflores 150, Miraflores - Lima - Peru\"",
+            "result": {
+              "duration": 4000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 11,
+            "name": "The user select picture \"C:\\Users\\renat\\Downloads\\VoucherEnero2023.jpeg\"",
+            "result": {
+              "duration": 4000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 12,
+            "name": "The user select his hobbies \"Checkbox 1, Checkbox 2 and Checkbox 3\"",
+            "result": {
+              "duration": 3000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 13,
+            "name": "The user select his gender \"radio 3\"",
+            "result": {
+              "duration": 6000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 14,
+            "name": "A user select multiple items \"Selection Item 1andSelection Item 2\"",
+            "result": {
+              "duration": 2000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 15,
+            "name": "A user select dropdown \"Drop Down Item 5\"",
+            "result": {
+              "duration": 2000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 16,
+            "name": "A user confirm form",
+            "result": {
+              "duration": 2000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          }
+        ],
+        "type": "scenario",
+        "tags": [
+          {
+            "line": 1,
+            "name": "@login"
+          },
+          {
+            "line": 4,
+            "name": "@SB-04"
+          }
+        ]
+      },
+      {
+        "description": "",
+        "id": "login;the-user-is-the-page;;2",
+        "keyword": "Scenario Outline",
+        "line": 34,
+        "name": "The user is the page",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "line": 20,
+            "name": "A web browser is at the demoqa page",
+            "result": {
+              "duration": 2036000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "When ",
+            "line": 21,
+            "name": "The user is select form",
+            "result": {
+              "duration": 4000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 22,
+            "name": "A user enters the firstname \"Juan\"",
+            "result": {
+              "duration": 4000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 23,
+            "name": "A user enters the lastname \"PErez\"",
+            "result": {
+              "duration": 2000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 24,
+            "name": "The user enters his current address \"Calle Las begonias SJm\"",
+            "result": {
+              "duration": 1000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 25,
+            "name": "The user select picture \"C:\\Users\\renat\\Downloads\\VoucherEnero2023.jpeg\"",
+            "result": {
+              "duration": 1000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 26,
+            "name": "The user select his hobbies \"Checkbox 1, Checkbox 2 and Checkbox 3\"",
+            "result": {
+              "duration": 3000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 27,
+            "name": "The user select his gender \"radio 3\"",
+            "result": {
+              "duration": 1000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 28,
+            "name": "A user select multiple items \"Selection Item 1andSelection Item 2\"",
+            "result": {
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 29,
+            "name": "A user select dropdown \"Drop Down Item 5\"",
+            "result": {
+              "duration": 1000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 30,
+            "name": "A user confirm form",
+            "result": {
+              "duration": 1000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          }
+        ],
+        "type": "scenario",
+        "tags": [
+          {
+            "line": 1,
+            "name": "@login"
+          },
+          {
+            "line": 18,
+            "name": "@SB-09"
+          }
+        ]
+      },
+      {
+        "description": "",
+        "id": "login;the-user-is-the-page;;3",
+        "keyword": "Scenario Outline",
+        "line": 35,
+        "name": "The user is the page",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "line": 20,
+            "name": "A web browser is at the demoqa page",
+            "result": {
+              "duration": 1917000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "When ",
+            "line": 21,
+            "name": "The user is select form",
+            "result": {
+              "duration": 8000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 22,
+            "name": "A user enters the firstname \"Gustavo\"",
+            "result": {
+              "duration": 4000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 23,
+            "name": "A user enters the lastname \"Cubas\"",
+            "result": {
+              "duration": 2000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 24,
+            "name": "The user enters his current address \"San Martin de Porres 120 SMP\"",
+            "result": {
+              "duration": 2000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 25,
+            "name": "The user select picture \"C:\\Users\\renat\\Downloads\\VoucherEnero2023.jpeg\"",
+            "result": {
+              "duration": 1000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 26,
+            "name": "The user select his hobbies \"Checkbox 1 and Checkbox 2\"",
+            "result": {
+              "duration": 3000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 27,
+            "name": "The user select his gender \"radio 1\"",
+            "result": {
+              "duration": 1000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 28,
+            "name": "A user select multiple items \"Selection Item 2andSelection Item 3\"",
+            "result": {
+              "duration": 1000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 29,
+            "name": "A user select dropdown \"Drop Down Item 5\"",
+            "result": {
+              "duration": 1000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 30,
+            "name": "A user confirm form",
+            "result": {
+              "duration": 3000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          }
+        ],
+        "type": "scenario",
+        "tags": [
+          {
+            "line": 1,
+            "name": "@login"
+          },
+          {
+            "line": 18,
+            "name": "@SB-09"
+          }
+        ]
+      }
+    ],
+    "id": "login",
+    "keyword": "Feature",
+    "line": 2,
+    "name": "Login",
+    "uri": "cypress/e2e/features/form.feature",
+    "tags": [
+      {
+        "line": 1,
+        "name": "@login"
+      }
+    ]
+  }
+]
