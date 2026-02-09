@@ -4,7 +4,8 @@
   "description": "project cypress cucumber",
   "main": "index.js",
   "scripts": {
-    "test": "cypress open"
+    "test": "cypress open",
+    "cypress:execution-cloud-browser-tags": "cypress run --browser chrome"
   },
   "keywords": [
     "cypress",

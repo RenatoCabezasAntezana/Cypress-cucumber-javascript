@@ -1,0 +1,32 @@
+name: Regression Testing DemoQA
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      - name: Install dependencies
+        run: npm i
+      - name: Cypress.io
+        uses: cypress-io/github-action@v6.5.0
+        with:
+          command: npm run cypress:execution-cloud-browser-tags
+          browser: chrome
+          record: true
+        env:
+          # Establece variables de entorno para desactivar Vulkan en Chrome
+          CHROME_EXTRA_ARGS: --disable-gpu --disable-software-rasterizer --disable-dev-shm-usage
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v4.1.5
+      - name: Upload Cypress Videos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-videos
+          path: cypress/videos/**/*.mp4

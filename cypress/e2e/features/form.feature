@@ -26,15 +26,13 @@ Feature: Form Page
     Then A user select multiple items "<items>"
     Then A user select dropdown "<dropdown>"
     Then A user confirm form
-    Examples:
-      | firstname | lastname | currentAddress               | picture                                        | hobbies                               | gender  | items                               | dropdown         |
-      | Juan      | PErez    | Calle Las begonias SJm       | C:\Users\renat\Downloads\VoucherEnero2023.jpeg | Checkbox 1, Checkbox 2 and Checkbox 3 | radio 3 | Selection Item 1andSelection Item 2 | Drop Down Item 5 |
-      | Gustavo   | Cubas    | San Martin de Porres 120 SMP | C:\Users\renat\Downloads\VoucherEnero2023.jpeg | Checkbox 1 and Checkbox 2             | radio 1 | Selection Item 2andSelection Item 3 | Drop Down Item 5 |
-#  Then A user enters the email "renato@gmail.com"
 
+    Examples:
+      | firstname | lastname | currentAddress               | picture                                            | hobbies                               | gender  | items                               | dropdown         |
+      | Juan      | PErez    | Calle Las begonias SJm       | C:\\Users\\renat\\Downloads\\VoucherEnero2023.jpeg | Checkbox 1, Checkbox 2 and Checkbox 3 | radio 3 | Selection Item 1andSelection Item 2 | Drop Down Item 5 |
+      | Gustavo   | Cubas    | San Martin de Porres 120 SMP | C:\\Users\\renat\\Downloads\\VoucherEnero2023.jpeg | Checkbox 1 and Checkbox 2             | radio 1 | Selection Item 2andSelection Item 3 | Drop Down Item 5 |
+#  Then A user enters the email "renato@gmail.com"
 # Then The user enters his cell phone number "9876543331"
 # Then the user select the date of birth "02 February 1998"
 # Then The user enters his subject "Maths{enter}"
-
-
 #Then The user enters his current address "Av. Miraflores 150"
