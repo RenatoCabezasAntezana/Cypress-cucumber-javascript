@@ -1,4 +1,4 @@
-name: Regression Testing DemoQA
+name:  Integration Tests
 
 on:
   push:
@@ -17,17 +17,26 @@ jobs:
       - name: Install dependencies
         run: npm i
 
+      # --- PASO CRUCIAL: Instalar el formateador para Linux ---
+      - name: Install Cucumber Formatter (Linux)
+        run: |
+          curl -L https://github.com/cucumber/json-formatter/releases/download/v19.0.0/cucumber-json-formatter-linux-amd64 -o cucumber-json-formatter
+          chmod +x cucumber-json-formatter
+
       - name: Cypress.io
         uses: cypress-io/github-action@v6.5.0
         with:
-          # Se usará el comando que definiste para ejecutar por tags
+          # Usamos tu comando de ejecución por tags
           command: npm run cypress:execution-tags
           browser: chrome
           record: true
+        env:
+          # Forzamos a que Cypress use el binario de Linux que descargamos arriba
+          CUCUMBER_JSON_FORMATTER: ./cucumber-json-formatter
 
-      # --- AQUÍ AGREGASTE EL PASO DE IMPORTACIÓN ---
+      # --- IMPORTACIÓN A XRAY JIRA ---
       - name: Import Results to Xray
-        if: always()
+        if: always() # Reporta incluso si los tests fallan
         uses: mikepenz/xray-action@v3
         with:
           username: ${{ secrets.XRAY_CLIENT_ID }}
@@ -35,11 +44,8 @@ jobs:
           testFormat: 'cucumber'
           testPaths: 'cypress/reports/cucumber-results.json'
           projectKey: 'SB'
-          # Nota el nombre corregido: testExecKey
+          # Captura el ID del Test Execution dinámico de Jira
           testExecKey: ${{ github.event.client_payload.test_execution_key }}
-
-      - name: Download a Build Artifact
-        uses: actions/download-artifact@v4.1.5
 
       - name: Upload Cypress Videos
         if: always()
