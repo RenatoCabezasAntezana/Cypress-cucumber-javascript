@@ -1,7 +1,7 @@
 @login 
 Feature: Login
 
-  @SB-04
+  @SB-4
   Scenario: The user is the page
     Given A web browser is at the demoqa page
     When The user is select form
@@ -15,7 +15,7 @@ Feature: Login
     Then A user select dropdown "Drop Down Item 5"
     Then A user confirm form
 
-  @SB-09
+  @SB-9
   Scenario Outline: The user is the page
     Given A web browser is at the demoqa page
     When The user is select form
