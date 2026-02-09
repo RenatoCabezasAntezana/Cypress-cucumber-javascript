@@ -26,7 +26,8 @@
   "cypress-cucumber-preprocessor": {
     "json": {
       "enabled": true,
-      "output": "cypress/reports/cucumber-results.json"
+      "output": "cypress/reports/cucumber-results.json",
+      "formatter": "./cucumber-json-formatter"
     },
     "messages": {
       "enabled": false
