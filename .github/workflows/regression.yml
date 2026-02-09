@@ -27,16 +27,16 @@ jobs:
 
       # --- AQUÍ AGREGASTE EL PASO DE IMPORTACIÓN ---
       - name: Import Results to Xray
-        if: always() # Importante: reporta incluso si los tests fallan
+        if: always()
         uses: mikepenz/xray-action@v3
         with:
           username: ${{ secrets.XRAY_CLIENT_ID }}
           password: ${{ secrets.XRAY_CLIENT_SECRET }}
-          testFormat: 'cucumber' 
-          testPaths: 'cypress/reports/cucumber-results.json' # Asegúrate que esta ruta coincida con tu config de Cucumber
+          testFormat: 'cucumber'
+          testPaths: 'cypress/reports/cucumber-results.json'
           projectKey: 'SB'
-          # Captura el ID del Test Execution enviado por el botón de Jira
-          testExecutionKey: ${{ github.event.client_payload.test_execution_key }}
+          # Nota el nombre corregido: testExecKey
+          testExecKey: ${{ github.event.client_payload.test_execution_key }}
 
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4.1.5
