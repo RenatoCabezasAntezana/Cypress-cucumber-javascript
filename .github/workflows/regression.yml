@@ -19,9 +19,9 @@ jobs:
           command: npm run cypress:execution-cloud-browser-tags
           browser: chrome
           record: true
-        env:
-          # Establece variables de entorno para desactivar Vulkan en Chrome
-          CHROME_EXTRA_ARGS: --disable-gpu --disable-software-rasterizer --disable-dev-shm-usage
+       # env:
+       #   # Establece variables de entorno para desactivar Vulkan en Chrome
+       #   CHROME_EXTRA_ARGS: --disable-gpu --disable-software-rasterizer --disable-dev-shm-usage
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4.1.5
       - name: Upload Cypress Videos
