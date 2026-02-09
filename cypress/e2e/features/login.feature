@@ -15,8 +15,8 @@ Feature: Login
     Then A user select dropdown "Drop Down Item 5"
     Then A user confirm form
 
-  @SB-9
-  Scenario Outline: Inicio de sesion invalido
+  @SB-13
+  Scenario Outline: Inicio de sesion invalido v2
     Given A web browser is at the demoqa page
     When The user is select form
     Then A user enters the firstname "<firstname>"
