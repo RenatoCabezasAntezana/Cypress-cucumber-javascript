@@ -28,6 +28,9 @@
       "enabled": true,
       "output": "cypress/reports/cucumber-results.json"
     },
+    "messages": {
+      "enabled": false
+    },  
     "stepDefinitions": [
       "cypress/e2e/steps-definitions/*.{js, ts}"
     ]
