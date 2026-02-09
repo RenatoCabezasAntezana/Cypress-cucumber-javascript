@@ -24,6 +24,10 @@
     "esbuild": "^0.15.18"
   },
   "cypress-cucumber-preprocessor": {
+    "json": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-results.json"
+    },
     "stepDefinitions": [
       "cypress/e2e/steps-definitions/*.{js, ts}"
     ]
