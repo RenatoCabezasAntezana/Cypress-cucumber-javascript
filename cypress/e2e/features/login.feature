@@ -1,4 +1,3 @@
-@login 
 Feature: Login
 
   @SB-04
