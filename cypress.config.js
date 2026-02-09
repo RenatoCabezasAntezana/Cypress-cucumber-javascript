@@ -24,7 +24,7 @@ module.exports = defineConfig({
       );
 
       // 3. MUY IMPORTANTE: Retornar el objeto config modificado
-      return config;
+      return config; 
     },
-  },
+  }, 
 });

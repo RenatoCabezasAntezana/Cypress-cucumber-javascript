@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - '**'
+  # Agrega esta sección para recibir la señal de Jira
+  repository_dispatch:
+    types: [run-cypress-tests] 
 
 jobs:
   cypress-run:
@@ -16,12 +19,10 @@ jobs:
       - name: Cypress.io
         uses: cypress-io/github-action@v6.5.0
         with:
-          command: npm run cypress:execution-cloud-browser-tags
+          # Puedes usar el payload enviado por Jira para filtrar tags dinámicamente
+          command: npm run cypress:execution-tags
           browser: chrome
           record: true
-       # env:
-       #   # Establece variables de entorno para desactivar Vulkan en Chrome
-       #   CHROME_EXTRA_ARGS: --disable-gpu --disable-software-rasterizer --disable-dev-shm-usage
       - name: Download a Build Artifact
         uses: actions/download-artifact@v4.1.5
       - name: Upload Cypress Videos

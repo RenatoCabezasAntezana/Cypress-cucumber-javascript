@@ -1,3 +1,4 @@
+@login
 Feature: Form Page
 
   Scenario: The user is the page
