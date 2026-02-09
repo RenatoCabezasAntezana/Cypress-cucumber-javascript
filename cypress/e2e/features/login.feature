@@ -2,7 +2,7 @@
 Feature: Login
 
   @SB-4
-  Scenario: The user is the page
+  Scenario: Inicio de sesion exitoso
     Given A web browser is at the demoqa page
     When The user is select form
     Then A user enters the firstname "Renato"
@@ -16,7 +16,7 @@ Feature: Login
     Then A user confirm form
 
   @SB-9
-  Scenario Outline: The user is the page
+  Scenario Outline: Inicio de sesion invalido
     Given A web browser is at the demoqa page
     When The user is select form
     Then A user enters the firstname "<firstname>"
