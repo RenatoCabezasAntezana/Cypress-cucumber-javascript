@@ -20,14 +20,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   // ante errores originados en la aplicación (demoqa)
   return false;
 });
-afterEach(function () {
-  if (this.currentTest.state === 'failed') {
-    const screenshot = `cypress/screenshots/${Cypress.spec.name}/${this.currentTest.title} (failed).png`;
-    // Aquí se lee la imagen y se adjunta al reporte JSON
-    cy.readFile(screenshot, 'base64').then((imgData) => {
-      window.cucumberJson.attach(imgData, 'image/png');
-    });
-  }
-});
+// No definir hooks de Cucumber en el archivo de soporte.
+// Mover hooks (`Before`/`After`) a archivos bajo `cypress/e2e/steps-definitions`.
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
