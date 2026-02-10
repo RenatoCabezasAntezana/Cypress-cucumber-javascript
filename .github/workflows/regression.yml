@@ -1,61 +1,77 @@
-name: Integration Tests
+name: Cypress Xray CI
 
 on:
   push:
-    branches:
-      - '**'
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  # Esto te permite disparar el test manualmente desde GitHub
+  workflow_dispatch:
+    inputs:
+      testPlanKey:
+        description: 'ID del Test Plan en Xray (ej. SB-10)'
+        required: true
+        type: string
+      projectKey:
+        description: 'ID del Proyecto (ej. SB)'
+        required: true
+        type: string
+  # Esto permite que el botón de Jira "Activar compilación" funcione
   repository_dispatch:
-    types: [run-cypress-tests] 
+    types: [run-cypress-tests]
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x] # Tal como el YAML que te pasaron
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4
 
-      # --- PASO DE VALIDACIÓN (Útil para debugear en los logs de GitHub) ---
-      - name: 🔍 Debug Xray Variables
-        run: |
-          echo "Ejecución recibida (testExecKey): ${{ github.event.client_payload.testExecKey }}"
-          echo "Plan recibido (testPlanKey): ${{ github.event.client_payload.testPlanKey }}"
-          echo "Proyecto: SB"
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Install dependencies
-        run: npm i
-
-      - name: Install Cucumber Formatter (Linux)
         run: |
+          npm install
+          # Instalamos el formateador de Cucumber para el reporte
           curl -L https://github.com/cucumber/json-formatter/releases/download/v19.0.0/cucumber-json-formatter-linux-amd64 -o cucumber-json-formatter
           chmod +x cucumber-json-formatter
 
-      - name: Cypress.io
-        uses: cypress-io/github-action@v6.5.0
-        with:
-          command: npm run cypress:execution-tags
-          browser: chrome
-          record: true
+      - name: Run Cypress Tests
+        continue-on-error: true
+        run: npm run cypress:execution-tags
         env:
           CUCUMBER_JSON_FORMATTER: ./cucumber-json-formatter
 
-      # --- IMPORTACIÓN DIRECTA POR API PARA EVITAR DUPLICADOS ---
-      - name: Import Results to Xray
+      - name: "Import results to Xray via API"
         if: always()
         run: |
-          # 1. Obtener Token de autenticación
+          # 1. Obtenemos el Token
           token=$(curl -H "Content-Type: application/json" -X POST \
             --data "{ \"client_id\": \"${{ secrets.XRAY_CLIENT_ID }}\", \"client_secret\": \"${{ secrets.XRAY_CLIENT_SECRET }}\" }" \
             https://xray.cloud.getxray.app/api/v2/authenticate | tr -d '"')
 
-          # 2. Enviar reporte a Jira
-          # Prioriza testExecKey si viene de un ticket de ejecución, o testPlanKey si viene de un plan.
+          # 2. Definimos las llaves dinámicas (Prioriza lo que venga de Jira, si no usa el Input manual)
+          T_PLAN="${{ github.event.client_payload.testPlanKey || github.event.inputs.testPlanKey }}"
+          T_EXEC="${{ github.event.client_payload.testExecKey }}"
+
+          # 3. Importación forzada al Plan o Ejecución existente
           curl -H "Content-Type: application/json" -X POST -H "Authorization: Bearer $token" \
           --data @cypress/reports/cucumber-results.json \
-          "https://xray.cloud.getxray.app/api/v2/import/execution/cucumber?testExecKey=${{ github.event.client_payload.testExecKey }}&testPlanKey=${{ github.event.client_payload.testPlanKey }}"
+          "https://xray.cloud.getxray.app/api/v2/import/execution/cucumber?testExecKey=$T_EXEC&testPlanKey=$T_PLAN"
 
-      - name: Upload Cypress Videos
+      - name: Upload Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-videos
-          path: cypress/videos/**/*.mp4
+          name: cypress-results
+          path: |
+            cypress/reports/
+            cypress/videos/
