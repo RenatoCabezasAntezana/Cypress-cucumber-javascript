@@ -8,8 +8,8 @@ on:
   # Esto te permite disparar el test manualmente desde GitHub
   workflow_dispatch:
     inputs:
-      testPlanKey:
-        description: 'ID del Test Plan en Xray (ej. SB-10)'
+      testExecKey:
+        description: 'Test Exec ID from Xray'
         required: true
         type: string
       projectKey:
