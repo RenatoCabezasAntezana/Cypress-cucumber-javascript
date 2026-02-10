@@ -15,7 +15,7 @@ Feature: Login
     Then A user confirm form
 
   @SB-13
-  Scenario Outline: Inicio de sesion invalido v2
+  Scenario: Inicio de sesion invalido v2
     Given A web browser is at the demoqa page
     When The user is select form
     Then A user enters the firstname "<firstname>"
@@ -27,9 +27,3 @@ Feature: Login
     Then A user select multiple items "<items>"
     Then A user select dropdown "<dropdown>"
     Then A user confirm form
-
-    Examples:
-      | firstname | lastname | currentAddress               | picture                                            | hobbies                               | gender  | items                               | dropdown         |
-      | Juan      | PErez    | Calle Las begonias SJm       | C:\\Users\\renat\\Downloads\\VoucherEnero2023.jpeg | Checkbox 1, Checkbox 2 and Checkbox 3 | radio 3 | Selection Item 1andSelection Item 2 | Drop Down Item 5 |
-      | Gustavo   | Cubas    | San Martin de Porres 120 SMP | C:\\Users\\renat\\Downloads\\VoucherEnero2023.jpeg | Checkbox 1 and Checkbox 2             | radio 1 | Selection Item 2andSelection Item 3 | Drop Down Item 5 |
-
