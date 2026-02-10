@@ -37,16 +37,18 @@ jobs:
           record: true
         env:
           CUCUMBER_JSON_FORMATTER: ./cucumber-json-formatter
-
+          
       - name: Import Results to Xray
-        if: always() 
+        if: always()
         uses: mikepenz/xray-action@v3
         with:
           username: ${{ secrets.XRAY_CLIENT_ID }}
           password: ${{ secrets.XRAY_CLIENT_SECRET }}
           testFormat: 'cucumber'
           testPaths: 'cypress/reports/cucumber-results.json'
+          # ESTA ES LA CLAVE: No pongas SB-3 a mano
           testExecKey: ${{ github.event.client_payload.test_execution_key }}
+          projectKey: 'SB'
 
       - name: Upload Cypress Videos
         if: always()
