@@ -38,6 +38,7 @@ jobs:
         env:
           CUCUMBER_JSON_FORMATTER: ./cucumber-json-formatter
           
+     # --- IMPORTACIÓN A XRAY JIRA (CORREGIDA PARA CASO B) ---
       - name: Import Results to Xray
         if: always()
         uses: mikepenz/xray-action@v3
@@ -46,10 +47,9 @@ jobs:
           password: ${{ secrets.XRAY_CLIENT_SECRET }}
           testFormat: 'cucumber'
           testPaths: 'cypress/reports/cucumber-results.json'
-          # ESTA ES LA CLAVE: No pongas SB-3 a mano
-          testExecKey: ${{ github.event.client_payload.test_execution_key }}
-          projectKey: 'SB'
-
+          # Usamos solo el ID dinámico con comillas
+          testExecKey: "${{ github.event.client_payload.test_execution_key }}"
+          
       - name: Upload Cypress Videos
         if: always()
         uses: actions/upload-artifact@v4
