@@ -14,12 +14,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.1.1
 
-      # --- PASO DE VALIDACIÓN ---
+      # --- PASO DE VALIDACIÓN (Útil para debugear en los logs de GitHub) ---
       - name: 🔍 Debug Xray Variables
         run: |
-          echo "El ID de Test Execution es: ${{ github.event.client_payload.test_execution_key }}"
-          echo "El Project Key es: SB"
-      # ---------------------------
+          echo "Ejecución recibida (testExecKey): ${{ github.event.client_payload.testExecKey }}"
+          echo "Plan recibido (testPlanKey): ${{ github.event.client_payload.testPlanKey }}"
+          echo "Proyecto: SB"
 
       - name: Install dependencies
         run: npm i
@@ -37,15 +37,22 @@ jobs:
           record: true
         env:
           CUCUMBER_JSON_FORMATTER: ./cucumber-json-formatter
-          
-      - name: Import Results to Xray Test Plan
-        run: |
-          token=$(curl -H "Content-Type: application/json" -X POST --data "{ \"client_id\": \"${{ secrets.XRAY_CLIENT_ID }}\", \"client_secret\": \"${{ secrets.XRAY_CLIENT_SECRET }}\" }" https://xray.cloud.getxray.app/api/v2/authenticate | tr -d '"')
 
+      # --- IMPORTACIÓN DIRECTA POR API PARA EVITAR DUPLICADOS ---
+      - name: Import Results to Xray
+        if: always()
+        run: |
+          # 1. Obtener Token de autenticación
+          token=$(curl -H "Content-Type: application/json" -X POST \
+            --data "{ \"client_id\": \"${{ secrets.XRAY_CLIENT_ID }}\", \"client_secret\": \"${{ secrets.XRAY_CLIENT_SECRET }}\" }" \
+            https://xray.cloud.getxray.app/api/v2/authenticate | tr -d '"')
+
+          # 2. Enviar reporte a Jira
+          # Prioriza testExecKey si viene de un ticket de ejecución, o testPlanKey si viene de un plan.
           curl -H "Content-Type: application/json" -X POST -H "Authorization: Bearer $token" \
           --data @cypress/reports/cucumber-results.json \
-          "https://xray.cloud.getxray.app/api/v2/import/execution/cucumber?testPlanKey=${{ github.event.client_payload.test_plan_key }}"
-          
+          "https://xray.cloud.getxray.app/api/v2/import/execution/cucumber?testExecKey=${{ github.event.client_payload.testExecKey }}&testPlanKey=${{ github.event.client_payload.testPlanKey }}"
+
       - name: Upload Cypress Videos
         if: always()
         uses: actions/upload-artifact@v4
