@@ -38,15 +38,13 @@ jobs:
         env:
           CUCUMBER_JSON_FORMATTER: ./cucumber-json-formatter
           
-      - name: Import Results via API (Forced Update)
+      - name: Import Results to Xray Test Plan
         run: |
-          # 1. Obtener el token de Xray Cloud
           token=$(curl -H "Content-Type: application/json" -X POST --data "{ \"client_id\": \"${{ secrets.XRAY_CLIENT_ID }}\", \"client_secret\": \"${{ secrets.XRAY_CLIENT_SECRET }}\" }" https://xray.cloud.getxray.app/api/v2/authenticate | tr -d '"')
 
-          # 2. Enviar el reporte al Test Execution específico
           curl -H "Content-Type: application/json" -X POST -H "Authorization: Bearer $token" \
           --data @cypress/reports/cucumber-results.json \
-          "https://xray.cloud.getxray.app/api/v2/import/execution/cucumber?testExecKey=SB-3"
+          "https://xray.cloud.getxray.app/api/v2/import/execution/cucumber?testPlanKey=${{ github.event.client_payload.test_plan_key }}"
           
       - name: Upload Cypress Videos
         if: always()
