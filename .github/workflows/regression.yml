@@ -37,18 +37,22 @@ jobs:
           record: true
         env:
           CUCUMBER_JSON_FORMATTER: ./cucumber-json-formatter
-
+          
       - name: Import Results to Xray
-        if: always() 
+        if: always()
         uses: mikepenz/xray-action@v3
         with:
           username: ${{ secrets.XRAY_CLIENT_ID }}
           password: ${{ secrets.XRAY_CLIENT_SECRET }}
           testFormat: 'cucumber'
           testPaths: 'cypress/reports/cucumber-results.json'
+          # Usamos la variable dinámica que confirmamos que funciona
+          testExecKey: "${{ github.event.client_payload.test_execution_key }}"
+          # Forzamos a que NO cree nada nuevo si falla el mapeo
+          failOnImportError: true
+          # IMPORTANTE: Xray Cloud a veces requiere este parámetro para identificar el ambiente
           projectKey: 'SB'
-          testExecKey: ${{ github.event.client_payload.test_execution_key }}
-
+          
       - name: Upload Cypress Videos
         if: always()
         uses: actions/upload-artifact@v4
