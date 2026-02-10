@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "login;the-user-is-the-page",
+        "id": "login;inicio-de-sesion-exitoso",
         "keyword": "Scenario",
-        "line": 5,
-        "name": "The user is the page",
+        "line": 4,
+        "name": "Inicio de sesion exitoso",
         "steps": [
           {
             "keyword": "Given ",
-            "line": 6,
+            "line": 5,
             "name": "A web browser is at the demoqa page",
             "result": {
-              "duration": 4398000000,
+              "duration": 3646000000,
               "status": "passed"
             },
             "match": {
@@ -23,10 +23,22 @@
           },
           {
             "keyword": "When ",
-            "line": 7,
+            "line": 6,
             "name": "The user is select form",
             "result": {
-              "duration": 4000000,
+              "duration": 6000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 7,
+            "name": "A user enters the firstname \"Renato\"",
+            "result": {
+              "duration": 5000000,
               "status": "passed"
             },
             "match": {
@@ -36,9 +48,9 @@
           {
             "keyword": "Then ",
             "line": 8,
-            "name": "A user enters the firstname \"Renato\"",
+            "name": "A user enters the lastname \"Cabezas\"",
             "result": {
-              "duration": 3000000,
+              "duration": 2000000,
               "status": "passed"
             },
             "match": {
@@ -48,9 +60,9 @@
           {
             "keyword": "Then ",
             "line": 9,
-            "name": "A user enters the lastname \"Cabezas\"",
+            "name": "The user enters his current address \"Av. Miraflores 150, Miraflores - Lima - Peru\"",
             "result": {
-              "duration": 4000000,
+              "duration": 5000000,
               "status": "passed"
             },
             "match": {
@@ -60,9 +72,9 @@
           {
             "keyword": "Then ",
             "line": 10,
-            "name": "The user enters his current address \"Av. Miraflores 150, Miraflores - Lima - Peru\"",
+            "name": "The user select picture \"C:\\Users\\renat\\Downloads\\VoucherEnero2023.jpeg\"",
             "result": {
-              "duration": 4000000,
+              "duration": 2000000,
               "status": "passed"
             },
             "match": {
@@ -72,9 +84,9 @@
           {
             "keyword": "Then ",
             "line": 11,
-            "name": "The user select picture \"C:\\Users\\renat\\Downloads\\VoucherEnero2023.jpeg\"",
+            "name": "The user select his hobbies \"Checkbox 1, Checkbox 2 and Checkbox 3\"",
             "result": {
-              "duration": 4000000,
+              "duration": 1000000,
               "status": "passed"
             },
             "match": {
@@ -84,7 +96,7 @@
           {
             "keyword": "Then ",
             "line": 12,
-            "name": "The user select his hobbies \"Checkbox 1, Checkbox 2 and Checkbox 3\"",
+            "name": "The user select his gender \"radio 3\"",
             "result": {
               "duration": 3000000,
               "status": "passed"
@@ -96,9 +108,9 @@
           {
             "keyword": "Then ",
             "line": 13,
-            "name": "The user select his gender \"radio 3\"",
+            "name": "A user select multiple items \"Selection Item 1andSelection Item 2\"",
             "result": {
-              "duration": 6000000,
+              "duration": 1000000,
               "status": "passed"
             },
             "match": {
@@ -108,9 +120,9 @@
           {
             "keyword": "Then ",
             "line": 14,
-            "name": "A user select multiple items \"Selection Item 1andSelection Item 2\"",
+            "name": "A user select dropdown \"Drop Down Item 5\"",
             "result": {
-              "duration": 2000000,
+              "duration": 1000000,
               "status": "passed"
             },
             "match": {
@@ -120,21 +132,9 @@
           {
             "keyword": "Then ",
             "line": 15,
-            "name": "A user select dropdown \"Drop Down Item 5\"",
-            "result": {
-              "duration": 2000000,
-              "status": "passed"
-            },
-            "match": {
-              "location": "not available:0"
-            }
-          },
-          {
-            "keyword": "Then ",
-            "line": 16,
             "name": "A user confirm form",
             "result": {
-              "duration": 2000000,
+              "duration": 3000000,
               "status": "passed"
             },
             "match": {
@@ -145,28 +145,28 @@
         "type": "scenario",
         "tags": [
           {
-            "line": 1,
-            "name": "@login"
+            "line": 3,
+            "name": "@SB-4"
           },
           {
-            "line": 4,
-            "name": "@SB-04"
+            "line": 3,
+            "name": "@login"
           }
         ]
       },
       {
         "description": "",
-        "id": "login;the-user-is-the-page;;2",
+        "id": "login;inicio-de-sesion-invalido-v2;;2",
         "keyword": "Scenario Outline",
-        "line": 34,
-        "name": "The user is the page",
+        "line": 33,
+        "name": "Inicio de sesion invalido v2",
         "steps": [
           {
             "keyword": "Given ",
-            "line": 20,
+            "line": 19,
             "name": "A web browser is at the demoqa page",
             "result": {
-              "duration": 2036000000,
+              "duration": 1998000000,
               "status": "passed"
             },
             "match": {
@@ -175,10 +175,22 @@
           },
           {
             "keyword": "When ",
-            "line": 21,
+            "line": 20,
             "name": "The user is select form",
             "result": {
-              "duration": 4000000,
+              "duration": 7000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 21,
+            "name": "A user enters the firstname \"Juan\"",
+            "result": {
+              "duration": 3000000,
               "status": "passed"
             },
             "match": {
@@ -188,9 +200,9 @@
           {
             "keyword": "Then ",
             "line": 22,
-            "name": "A user enters the firstname \"Juan\"",
+            "name": "A user enters the lastname \"PErez\"",
             "result": {
-              "duration": 4000000,
+              "duration": 1000000,
               "status": "passed"
             },
             "match": {
@@ -200,18 +212,6 @@
           {
             "keyword": "Then ",
             "line": 23,
-            "name": "A user enters the lastname \"PErez\"",
-            "result": {
-              "duration": 2000000,
-              "status": "passed"
-            },
-            "match": {
-              "location": "not available:0"
-            }
-          },
-          {
-            "keyword": "Then ",
-            "line": 24,
             "name": "The user enters his current address \"Calle Las begonias SJm\"",
             "result": {
               "duration": 1000000,
@@ -223,8 +223,20 @@
           },
           {
             "keyword": "Then ",
-            "line": 25,
+            "line": 24,
             "name": "The user select picture \"C:\\Users\\renat\\Downloads\\VoucherEnero2023.jpeg\"",
+            "result": {
+              "duration": 2000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 25,
+            "name": "The user select his hobbies \"Checkbox 1, Checkbox 2 and Checkbox 3\"",
             "result": {
               "duration": 1000000,
               "status": "passed"
@@ -236,18 +248,6 @@
           {
             "keyword": "Then ",
             "line": 26,
-            "name": "The user select his hobbies \"Checkbox 1, Checkbox 2 and Checkbox 3\"",
-            "result": {
-              "duration": 3000000,
-              "status": "passed"
-            },
-            "match": {
-              "location": "not available:0"
-            }
-          },
-          {
-            "keyword": "Then ",
-            "line": 27,
             "name": "The user select his gender \"radio 3\"",
             "result": {
               "duration": 1000000,
@@ -259,9 +259,10 @@
           },
           {
             "keyword": "Then ",
-            "line": 28,
+            "line": 27,
             "name": "A user select multiple items \"Selection Item 1andSelection Item 2\"",
             "result": {
+              "duration": 1000000,
               "status": "passed"
             },
             "match": {
@@ -270,7 +271,7 @@
           },
           {
             "keyword": "Then ",
-            "line": 29,
+            "line": 28,
             "name": "A user select dropdown \"Drop Down Item 5\"",
             "result": {
               "duration": 1000000,
@@ -282,7 +283,7 @@
           },
           {
             "keyword": "Then ",
-            "line": 30,
+            "line": 29,
             "name": "A user confirm form",
             "result": {
               "duration": 1000000,
@@ -296,28 +297,28 @@
         "type": "scenario",
         "tags": [
           {
-            "line": 1,
-            "name": "@login"
+            "line": 17,
+            "name": "@SB-13"
           },
           {
-            "line": 18,
-            "name": "@SB-09"
+            "line": 17,
+            "name": "@login"
           }
         ]
       },
       {
         "description": "",
-        "id": "login;the-user-is-the-page;;3",
+        "id": "login;inicio-de-sesion-invalido-v2;;3",
         "keyword": "Scenario Outline",
-        "line": 35,
-        "name": "The user is the page",
+        "line": 34,
+        "name": "Inicio de sesion invalido v2",
         "steps": [
           {
             "keyword": "Given ",
-            "line": 20,
+            "line": 19,
             "name": "A web browser is at the demoqa page",
             "result": {
-              "duration": 1917000000,
+              "duration": 1908000000,
               "status": "passed"
             },
             "match": {
@@ -326,10 +327,22 @@
           },
           {
             "keyword": "When ",
-            "line": 21,
+            "line": 20,
             "name": "The user is select form",
             "result": {
-              "duration": 8000000,
+              "duration": 6000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 21,
+            "name": "A user enters the firstname \"Gustavo\"",
+            "result": {
+              "duration": 1000000,
               "status": "passed"
             },
             "match": {
@@ -339,9 +352,9 @@
           {
             "keyword": "Then ",
             "line": 22,
-            "name": "A user enters the firstname \"Gustavo\"",
+            "name": "A user enters the lastname \"Cubas\"",
             "result": {
-              "duration": 4000000,
+              "duration": 1000000,
               "status": "passed"
             },
             "match": {
@@ -351,9 +364,9 @@
           {
             "keyword": "Then ",
             "line": 23,
-            "name": "A user enters the lastname \"Cubas\"",
+            "name": "The user enters his current address \"San Martin de Porres 120 SMP\"",
             "result": {
-              "duration": 2000000,
+              "duration": 3000000,
               "status": "passed"
             },
             "match": {
@@ -363,18 +376,6 @@
           {
             "keyword": "Then ",
             "line": 24,
-            "name": "The user enters his current address \"San Martin de Porres 120 SMP\"",
-            "result": {
-              "duration": 2000000,
-              "status": "passed"
-            },
-            "match": {
-              "location": "not available:0"
-            }
-          },
-          {
-            "keyword": "Then ",
-            "line": 25,
             "name": "The user select picture \"C:\\Users\\renat\\Downloads\\VoucherEnero2023.jpeg\"",
             "result": {
               "duration": 1000000,
@@ -386,10 +387,10 @@
           },
           {
             "keyword": "Then ",
-            "line": 26,
+            "line": 25,
             "name": "The user select his hobbies \"Checkbox 1 and Checkbox 2\"",
             "result": {
-              "duration": 3000000,
+              "duration": 1000000,
               "status": "passed"
             },
             "match": {
@@ -398,7 +399,7 @@
           },
           {
             "keyword": "Then ",
-            "line": 27,
+            "line": 26,
             "name": "The user select his gender \"radio 1\"",
             "result": {
               "duration": 1000000,
@@ -410,10 +411,21 @@
           },
           {
             "keyword": "Then ",
-            "line": 28,
+            "line": 27,
             "name": "A user select multiple items \"Selection Item 2andSelection Item 3\"",
             "result": {
-              "duration": 1000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "not available:0"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "line": 28,
+            "name": "A user select dropdown \"Drop Down Item 5\"",
+            "result": {
+              "duration": 3000000,
               "status": "passed"
             },
             "match": {
@@ -423,21 +435,9 @@
           {
             "keyword": "Then ",
             "line": 29,
-            "name": "A user select dropdown \"Drop Down Item 5\"",
-            "result": {
-              "duration": 1000000,
-              "status": "passed"
-            },
-            "match": {
-              "location": "not available:0"
-            }
-          },
-          {
-            "keyword": "Then ",
-            "line": 30,
             "name": "A user confirm form",
             "result": {
-              "duration": 3000000,
+              "duration": 1000000,
               "status": "passed"
             },
             "match": {
@@ -448,26 +448,20 @@
         "type": "scenario",
         "tags": [
           {
-            "line": 1,
-            "name": "@login"
+            "line": 17,
+            "name": "@SB-13"
           },
           {
-            "line": 18,
-            "name": "@SB-09"
+            "line": 17,
+            "name": "@login"
           }
         ]
       }
     ],
     "id": "login",
     "keyword": "Feature",
-    "line": 2,
+    "line": 1,
     "name": "Login",
-    "uri": "cypress/e2e/features/form.feature",
-    "tags": [
-      {
-        "line": 1,
-        "name": "@login"
-      }
-    ]
+    "uri": "cypress/e2e/features/login.feature"
   }
 ]
