@@ -10,6 +10,10 @@ When("The user is select form", () => {
 //  formPage.clickForm();
 });
 
+When("The user is select form 2", () => {
+  cy.contains("renato").click();
+});
+
 Then("A user enters the firstname {string}", (username) => {
  // formPage.typeUserNameInput(username);
 });

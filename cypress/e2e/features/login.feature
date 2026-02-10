@@ -27,10 +27,11 @@ Feature: Login
     Then A user select multiple items "<items>"
     Then A user select dropdown "<dropdown>"
     Then A user confirm form
-
-Scenario: Inicio de sesion exitoso
+    
+  @SB-34
+  Scenario: Inicio de sesion exitoso
     Given A web browser is at the demoqa page
-    When The user is select form
+    When The user is select form 2
     Then A user enters the firstname "Renato"
     Then A user enters the lastname "Cabezas"
     Then The user enters his current address "Av. Miraflores 150, Miraflores - Lima - Peru"

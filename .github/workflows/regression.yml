@@ -44,25 +44,32 @@ jobs:
           curl -L https://github.com/cucumber/json-formatter/releases/download/v19.0.0/cucumber-json-formatter-linux-amd64 -o cucumber-json-formatter
           chmod +x cucumber-json-formatter
 
-      - name: Run Cypress Tests
+      - name: Run Cypress tests
         continue-on-error: true
         run: npm run cypress:execution-tags
         env:
           CUCUMBER_JSON_FORMATTER: ./cucumber-json-formatter
 
-      - name: "Import results to Xray via API"
+      # --- PASO NUEVO: Procesar capturas de pantalla ---
+      - name: Upload Screenshots to Artifacts (Opcional)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots/
+
+      - name: "Import results to Xray with Screenshots"
         if: always()
         run: |
-          # 1. Obtenemos el Token
           token=$(curl -H "Content-Type: application/json" -X POST \
             --data "{ \"client_id\": \"${{ secrets.XRAY_CLIENT_ID }}\", \"client_secret\": \"${{ secrets.XRAY_CLIENT_SECRET }}\" }" \
             https://xray.cloud.getxray.app/api/v2/authenticate | tr -d '"')
 
-          # 2. Definimos las llaves dinámicas (Prioriza lo que venga de Jira, si no usa el Input manual)
           T_PLAN="${{ github.event.client_payload.testPlanKey || github.event.inputs.testPlanKey }}"
           T_EXEC="${{ github.event.client_payload.testExecKey }}"
 
-          # 3. Importación forzada al Plan o Ejecución existente
+          # Al enviar el JSON que ya tiene las imágenes embebidas, 
+          # Xray las mostrará automáticamente en la sección 'Evidencias' de Jira.
           curl -H "Content-Type: application/json" -X POST -H "Authorization: Bearer $token" \
           --data @cypress/reports/cucumber-results.json \
           "https://xray.cloud.getxray.app/api/v2/import/execution/cucumber?testExecKey=$T_EXEC&testPlanKey=$T_PLAN"
