@@ -46,7 +46,6 @@ jobs:
           password: ${{ secrets.XRAY_CLIENT_SECRET }}
           testFormat: 'cucumber'
           testPaths: 'cypress/reports/cucumber-results.json'
-          projectKey: 'SB'
           testExecKey: ${{ github.event.client_payload.test_execution_key }}
 
       - name: Upload Cypress Videos
