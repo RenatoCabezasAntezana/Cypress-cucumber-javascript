@@ -45,7 +45,7 @@ Feature: Login
   @regression
   Scenario: Prueba
     Given A web browser is at the demoqa page
-    When The user is select form 2
+    When The user is select form
     Then A user enters the firstname "Renato"
     Then A user enters the lastname "Cabezas"
     Then The user enters his current address "Av. Miraflores 150, Miraflores - Lima - Peru"
@@ -58,7 +58,7 @@ Feature: Login
 
  Scenario: Prueba 02
     Given A web browser is at the demoqa page
-    When The user is select form 2
+    When The user is select form
     Then A user enters the firstname "Renato"
     Then A user enters the lastname "Cabezas"
     Then The user enters his current address "Av. Miraflores 150, Miraflores - Lima - Peru"
