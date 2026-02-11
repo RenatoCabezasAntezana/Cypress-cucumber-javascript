@@ -5,80 +5,58 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  # Esto te permite disparar el test manualmente desde GitHub
   workflow_dispatch:
     inputs:
       testPlanKey:
-        description: 'ID del Test Plan en Xray (ej. SB-10)'
-        required: true
+        description: 'ID del Test Plan (ej. SB-10)'
+        required: false # Cambiado a false para que el push automático no falle
         type: string
       projectKey:
         description: 'ID del Proyecto (ej. SB)'
-        required: true
+        required: false
         type: string
-  # Esto permite que el botón de Jira "Activar compilación" funcione
   repository_dispatch:
     types: [run-cypress-tests]
 
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x] # Tal como el YAML que te pasaron
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18
 
       - name: Install dependencies
-        run: |
-          npm install
-          # Instalamos el formateador de Cucumber para el reporte
-          curl -L https://github.com/cucumber/json-formatter/releases/download/v19.0.0/cucumber-json-formatter-linux-amd64 -o cucumber-json-formatter
-          chmod +x cucumber-json-formatter
+        run: npm install
 
       - name: Run Cypress tests
         continue-on-error: true
-        run: npm run cypress:execution-tags
-        env:
-          CUCUMBER_JSON_FORMATTER: ./cucumber-json-formatter
+        run: npx cypress run --reporter cypress-junit-reporter --reporter-options "mochaFile=cypress/results/results-[hash].xml"
 
-      # --- PASO NUEVO: Procesar capturas de pantalla ---
-      - name: Upload Screenshots to Artifacts (Opcional)
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-screenshots
-          path: cypress/screenshots/
-
-      - name: "Import results to Xray with Screenshots"
+      - name: "Import results to Xray"
         if: always()
-        run: |
-          token=$(curl -H "Content-Type: application/json" -X POST \
-            --data "{ \"client_id\": \"${{ secrets.XRAY_CLIENT_ID }}\", \"client_secret\": \"${{ secrets.XRAY_CLIENT_SECRET }}\" }" \
-            https://xray.cloud.getxray.app/api/v2/authenticate | tr -d '"')
-
-          T_PLAN="${{ github.event.client_payload.testPlanKey || github.event.inputs.testPlanKey }}"
-          T_EXEC="${{ github.event.client_payload.testExecKey }}"
-
-          # Al enviar el JSON que ya tiene las imágenes embebidas, 
-          # Xray las mostrará automáticamente en la sección 'Evidencias' de Jira.
-          curl -H "Content-Type: application/json" -X POST -H "Authorization: Bearer $token" \
-          --data @cypress/reports/cucumber-results.json \
-          "https://xray.cloud.getxray.app/api/v2/import/execution/cucumber?testExecKey=$T_EXEC&testPlanKey=$T_PLAN"
+        uses: mikepenz/xray-action@v2.3.0
+        with:
+          username: "${{ secrets.XRAYCLOUD_CLIENT_ID }}"
+          password: "${{ secrets.XRAYCLOUD_CLIENT_SECRET }}"
+          xrayCloud: "true"
+          testFormat: "junit"
+          # Buscamos en la carpeta definida en el comando anterior
+          testPaths: "cypress/results/*.xml" 
+          # Prioriza el input manual, si no, usa el secret
+          testPlanKey: "${{ github.event.inputs.testPlanKey || secrets.TESTPLANKEY }}"
+          projectKey: "${{ github.event.inputs.projectKey || secrets.PROJECTKEY }}"
 
       - name: Upload Artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-results
+          name: cypress-execution-evidence
           path: |
-            cypress/reports/
+            cypress/results/
             cypress/videos/
+            cypress/screenshots/
