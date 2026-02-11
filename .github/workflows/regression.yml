@@ -24,6 +24,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      # --- PASO DE VALIDACIÓN ---
+      - name: 🔍 Debug Xray Variables
+        run: |
+          echo "El ID de Project es: ${{ github.event.inputs.projectKey }}"
+          echo "El ID de Test Plan es: ${{ github.event.inputs.testPlanKey }}"
+      # ---------------------------
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
