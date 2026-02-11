@@ -33,9 +33,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Cypress tests
+      - name: Run Cypress Regression Tests
         continue-on-error: true
-        run: npx cypress run --reporter cypress-junit-reporter --reporter-options "mochaFile=cypress/results/results-[hash].xml"
+        run: |
+          npx cypress run \
+          --browser chrome \
+          --headless \
+          --env tags=@regression \
+          --spec "cypress/e2e/**/*.feature" \
+          --reporter cypress-junit-reporter \
+          --reporter-options "mochaFile=cypress/results/results-[hash].xml"
 
       - name: "Import results to Xray"
         if: always()
