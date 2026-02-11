@@ -41,8 +41,8 @@ jobs:
         if: always()
         uses: mikepenz/xray-action@v2.3.0
         with:
-          username: "${{ secrets.XRAYCLOUD_CLIENT_ID }}"
-          password: "${{ secrets.XRAYCLOUD_CLIENT_SECRET }}"
+          username: ${{ secrets.XRAY_CLIENT_ID }}
+          password: ${{ secrets.XRAY_CLIENT_SECRET }}
           xrayCloud: "true"
           testFormat: "junit"
           # Buscamos en la carpeta definida en el comando anterior
