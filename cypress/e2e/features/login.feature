@@ -1,6 +1,6 @@
 Feature: Login
 
-  @SB-4
+  @RC-4
   Scenario: Inicio de sesion exitoso
     Given A web browser is at the demoqa page
     When The user is select form
@@ -14,7 +14,7 @@ Feature: Login
     Then A user select dropdown "Drop Down Item 5"
     Then A user confirm form
 
-  @SB-13
+  
   Scenario: Inicio de sesion invalido v2
     Given A web browser is at the demoqa page
     When The user is select form
@@ -27,8 +27,8 @@ Feature: Login
     Then A user select multiple items "<items>"
     Then A user select dropdown "<dropdown>"
     Then A user confirm form
-    
-  @SB-34
+
+  
   Scenario: Inicio de sesion exitoso
     Given A web browser is at the demoqa page
     When The user is select form 2
