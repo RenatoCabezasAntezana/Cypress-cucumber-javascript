@@ -29,7 +29,7 @@ Feature: Login
     Then A user confirm form
 
   
-  Scenario: Inicio de sesion exitoso
+  Scenario: Inicio de sesion exitoso por Renato
     Given A web browser is at the demoqa page
     When The user is select form 2
     Then A user enters the firstname "Renato"
