@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress open",
-    "cypress:execution-tags": "npx cypress run --browser chrome --headless --env tags=@regression"
+    "cypress:execution-tags": "cypress run --browser chrome --headless --env tags=@regression --reporter cypress-junit-reporter --reporter-options \"mochaFile=cypress/results/results-[hash].xml,useFullSuiteTitle=false\""
   },
   "keywords": [
     "cypress",

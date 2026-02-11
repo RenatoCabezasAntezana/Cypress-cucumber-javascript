@@ -19,6 +19,7 @@ module.exports = defineConfig({
       mochaFile: "cypress/results/results-[hash].xml", // Estructura del nombre
       toConsole: true, // Para ver el progreso en la terminal
       attachments: true,
+      useFullSuiteTitle: false
     }, // Si quieres que Xray intente vincular pantallazos
     async setupNodeEvents(on, config) {
       // 1. PRIMERO: Registrar el plugin de Cucumber

@@ -1,7 +1,7 @@
 Feature: Login
 
   @regression
-  Scenario: Inicio de sesion exitoso
+  Scenario: RC-6 Inicio de sesion exitoso
     Given A web browser is at the demoqa page
     When The user is select form
     Then A user enters the firstname "Renato"
@@ -15,7 +15,7 @@ Feature: Login
     Then A user confirm form
 
   @regression
-  Scenario: Inicio de sesion invalido v2
+  Scenario: RC-7 Inicio de sesion invalido v2
     Given A web browser is at the demoqa page
     When The user is select form
     Then A user enters the firstname "<firstname>"
@@ -29,7 +29,7 @@ Feature: Login
     Then A user confirm form
 
   @regression
-  Scenario: Inicio de sesion exitoso por Renato
+  Scenario: RC-13 Inicio de sesion exitoso por Renato
     Given A web browser is at the demoqa page
     When The user is select form 2
     Then A user enters the firstname "Renato"
@@ -43,7 +43,7 @@ Feature: Login
     Then A user confirm form
 
   @regression
-  Scenario: Prueba
+  Scenario: RC-4 Prueba
     Given A web browser is at the demoqa page
     When The user is select form
     Then A user enters the firstname "Renato"
